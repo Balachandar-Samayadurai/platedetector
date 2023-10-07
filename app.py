@@ -2,12 +2,9 @@ import cv2
 import requests
 import numpy as np
 import streamlit as st
-from dotenv import load_dotenv
-from os import getenv
+import os
 
-load_dotenv()
-
-token = getenv("TOKEN")
+token = st.secrets["TOKEN"]
 
 st.title("License Plate Recognition App")
 
