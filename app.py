@@ -2,6 +2,12 @@ import cv2
 import requests
 import numpy as np
 import streamlit as st
+from dotenv import load_dotenv
+from os import getenv
+
+load_dotenv()
+
+token = getenv("TOKEN")
 
 st.title("License Plate Recognition App")
 
@@ -14,7 +20,7 @@ if uploaded_image:
 
     response = requests.post(
         'https://api.platerecognizer.com/v1/plate-reader/',
-        headers={'Authorization': 'Token 915242d9d7692b25a688607dc604b2b1eef342df'},
+        headers={'Authorization': f'Token {token}'},
         files={'upload': image_jpg.tobytes()})
 
     response_json = response.json()
